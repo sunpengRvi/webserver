@@ -14,7 +14,7 @@ terraform {
 }
 
 module "webserver_cluster" {
-  source = "../../../modules/services/webserver-cluster"
+  source = "github.com/sunpengRvi/webserver-modules//services/webserver-cluster?ref=v0.0.3"
 
   cluster_name = "webserver-prod"
   db_remote_state_bucket = "terraform-up-and-running-state-psun-20230915"
