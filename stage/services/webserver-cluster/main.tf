@@ -1,5 +1,13 @@
 provider "aws" {
   region = "us-east-2"
+
+  # Tags to apply to all AWS resources by default
+  default_tags {
+    tags = {
+      Owner = "team-foo"
+      ManagedBy = "Terraform"
+    }
+  }
 }
 
 terraform {
@@ -23,6 +31,11 @@ module "webserver_cluster" {
   instance_type = "t2.micro"
   min_size = 2
   max_size = 2
+
+  custom_tags = {
+    Owner = "team-foo"
+    ManagedBy = "terraform"
+  }
 }
 
 resource "aws_security_group_rule" "allow_testing_inbound" {
